@@ -6,13 +6,13 @@ import Navbar from "@/components/navbar/Navbar";
 
 const MainPage = ({allQuestions}) => {
   
-  const [questions, setQuestions] = useState (allQuestions);
+  const [question, setQuestion] = useState (allQuestions);
 
   return (
     <div>
       <Navbar />
       <div className={styles.questionsWrapper}>
-        {questions.map((question) => (
+        {question.map((question) => (
           <div key={question.id}>
             <QuestionCard
               id={question.id}
