@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import styles from "./styles.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
+import Navbar from "@/components/navbar/Navbar";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -20,7 +21,7 @@ const LoginPage = () => {
       localStrorage.setItem("forumUserToken", response.data.jwt);
       localStrorage.setItem("forumUserId", response.data.id);
 
-      router.push("/questions");
+      router.push("/");
     } catch (err) {
       console.log("err", err);
     }
@@ -28,6 +29,7 @@ const LoginPage = () => {
 
   return (
     <div>
+      <Navbar />
       <h1 className={styles.title}>Prisijunkite</h1>
       <div className={styles.form}>
         <input

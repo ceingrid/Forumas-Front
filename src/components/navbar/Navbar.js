@@ -14,7 +14,7 @@ const Navbar  = () => {
           <a className={styles.aStyle} href="/login">LOGIN</a>
         </li>
         <li className={styles.li}>
-          <a className={styles.aStyle} href="/signin">SIGN UP</a>
+          <a className={styles.aStyle} href="/signUp">SIGN UP</a>
         </li>
       </ul>
       </div>

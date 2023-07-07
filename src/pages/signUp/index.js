@@ -1,23 +1,31 @@
 import React, {useState} from 'react';
 import styles from './styles.module.css';
 import axios from "axios";
+import Navbar from '@/components/navbar/Navbar';
 
 const SignUp = () => {
 const [name, setName] = useState("");
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
-const createUser = ()=> {
-  const response = axios.post("http://localhost:8080/user", {
+
+const createUser = async () => {
+    try {
+  const response =  await axios.post("http://localhost:8000/user", {
     name: name,
     email: email,
     password: password,
   }); 
 
   console.log('response', response);
+  router.push("/");
+} catch (error) {
+    console.error('Error creating user:', error);
+}
 };
 
   return (
     <>
+    < Navbar />
     <h1 className={styles.title}>Naujo nario registracija:</h1>
 
     <div className={styles.form}>
@@ -40,4 +48,4 @@ const createUser = ()=> {
   )
 }
 
-export default SignUp
+export default SignUp;

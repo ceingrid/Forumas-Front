@@ -6,13 +6,13 @@ import Navbar from "@/components/navbar/Navbar";
 
 const MainPage = ({allQuestions}) => {
   
-  const [question, setQuestion] = useState (allQuestions);
+  const [questions, setQuestions] = useState (allQuestions);
 
   return (
     <div>
       <Navbar />
       <div className={styles.questionsWrapper}>
-        {question.map((question) => (
+        {questions.map((question) => (
           <div key={question.id}>
             <QuestionCard
               id={question.id}
@@ -21,7 +21,17 @@ const MainPage = ({allQuestions}) => {
           </div>
         ))}
       </div>
-    </div>
+      <div>
+      <ul className={styles.ulStyle}>
+        <li className={styles.li}>
+          <a className={styles.aStyle} href="/">VISI KLAUSIMAI</a>
+        </li>
+        <li className={styles.li}>
+          <a className={styles.aStyle} href="/newQuestion/newQuestion">UŽDUOTI SAVO KLAUSIMĄ</a>
+        </li>
+      </ul>
+      </div>
+      </div>
   );
 };
 
@@ -30,12 +40,12 @@ export default MainPage;
 export async function getServerSideProps(ctx) {
   console.log(ctx.query.id);
   try {
-    const response = await axios.get("http://localhost:8000/questions_without_comments");
+    const response = await axios.get("http://localhost:8000/questions");
     const { data } = response;
 
-    return { props: { allQuestions: data } }; 
+    return { props: { allQuestions: data.questions } }; 
   } catch (err) {
-    console.log(err);
+    console.log('Error during data fetch:', err);
     return { props: { allQuestions: [] } }; 
   }
 }
