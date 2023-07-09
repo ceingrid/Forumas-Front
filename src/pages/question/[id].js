@@ -15,7 +15,7 @@ const response = await axios.get(
 );
 
 const { data } = response;
-setQuestion(data);
+setQuestion(data.question);
 console.log("response", response);
 };
 useEffect(() => {

@@ -6,9 +6,7 @@ const QuestionCard = ({ question_text, id }) => {
   return (
     <Link  className={styles.linkStyle} href={`/question/${id}`} passHref>
       <div className={styles.link}>
-        <div className={styles.question}>
-          <h1 className={styles.question_text}>{question_text}</h1>
-        </div>
+          <p className={styles.question_text}>{question_text}</p>
       </div>
     </Link>
   );
