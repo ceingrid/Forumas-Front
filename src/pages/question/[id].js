@@ -41,8 +41,8 @@ const Question = () => {
       );
 
       console.log("response", response);
-      fetchEvent(); // Refresh the comments after posting a new one
-      setComment(''); // Clear the comment input after posting
+      fetchEvent();
+      setComment('');
     } catch (err) {
       console.error("Error adding new comment:", err);
     }
