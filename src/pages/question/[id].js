@@ -5,37 +5,72 @@ import Navbar from "@/components/navbar/Navbar";
 import styles from "./styles.module.css";
 
 const Question = () => {
-    const [question, setQuestion] = useState();
-    const router = useRouter();
-    const { id } = router.query;
+  const [question, setQuestion] = useState();
+  const [comment, setComment] = useState("");
+  const router = useRouter();
+  const { id } = router.query;
 
-const fetchEvent = async () => {
-const response = await axios.get(
-`http://localhost:8000/question/${id}`
-);
+  const fetchEvent = async () => {
+    const response = await axios.get(`http://localhost:8000/question/${id}`);
 
-const { data } = response;
-setQuestion(data.question);
-console.log("response", response);
-};
-useEffect(() => {
-if (id) {fetchEvent();
-}}, [id]);
+    const { data } = response;
+    setQuestion(data.question);
+    console.log("response", response);
+  };
 
+  useEffect(() => {
+    if (id) {
+      fetchEvent();
+    }
+  }, [id]);
 
-return (
+  const addNewComment = async () => {
+    const token = localStorage.getItem("forumUserToken");
+
+    try {
+      const response = await axios.post(
+        `http://localhost:8000/question/${id}/comment`,
+        {
+          comment_text: comment,
+        },
+        {
+          headers: {
+            'Authorization': token,
+          },
+        }
+      );
+
+      console.log("response", response);
+      fetchEvent(); // Refresh the comments after posting a new one
+      setComment(''); // Clear the comment input after posting
+    } catch (err) {
+      console.error("Error adding new comment:", err);
+    }
+  };
+
+  return (
     <>
-    <Navbar />
-    <div className={styles.pageWrapper}>
+      <Navbar />
+      <div className={styles.pageWrapper}>
         {question && (
-            <div className={styles.wrapper}>
-                <h1>{question.question_text}</h1>
-                    <button className={styles.button}>Atsakyti</button>
+          <>
+            <div className={styles.question}>{question.question_text}</div>
+            <div className={styles.inputWrapper}>
+              <input
+                className={styles.input}
+                value={comment}
+                onChange={(event) => setComment(event.target.value)}
+                placeholder="Vieta Jūsų komentarui"
+              />
             </div>
+            <button className={styles.button} onClick={addNewComment}>
+              Pridėti komentarą
+            </button>
+          </>
         )}
-    </div>
+      </div>
     </>
-    );
-}
+  );
+};
 
 export default Question;

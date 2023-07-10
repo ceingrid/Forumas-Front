@@ -6,7 +6,7 @@
     color: linear-gradient(90deg, rgba(131,58,180,0.8113839285714286) 0%, rgba(87,29,253,0.6265099789915967) 50%, rgba(252,176,69,0.6153054971988796) 100%);
     font-family: 'Times New Roman', Times, serif;
     text-transform:uppercase;
-    font-size: large;
+    font-size: small;
     margin: auto;
     border: solid;
 }
