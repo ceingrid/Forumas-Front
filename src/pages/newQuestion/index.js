@@ -11,7 +11,7 @@ const NewQuestion = () => {
 
     const addNewQuestion = async () => {
         const response = await axios.post("http://localhost:8000/question", {
-            questionText: question_text,
+            question_text: question_text,
         });
 
         console.log("response", response);

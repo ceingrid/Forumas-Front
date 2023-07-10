@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import Link from 'next/link';
 import styles from "./styles.module.css";
 import QuestionCard from "../components/questionCard/QuestionCard";
 import Navbar from "@/components/navbar/Navbar";
@@ -22,11 +23,8 @@ const MainPage = ({allQuestions}) => {
         ))}
       </div>
       <div className={styles.buttonsWrapper}>
-    
-          <a className={styles.aStyle} href="/">VISI KLAUSIMAI</a>
-     
-          <a className={styles.aStyle} href="/newQuestion/newQuestion">UŽDUOTI SAVO KLAUSIMĄ</a>
-     
+        <Link href="/">VISI KLAUSIMAI</Link>
+        <Link href="/newQuestion">UŽDUOTI SAVO KLAUSIMĄ</Link>
       </div>
       </div>
   );

@@ -2,11 +2,15 @@ import React, {useState} from 'react';
 import styles from './styles.module.css';
 import axios from "axios";
 import Navbar from '@/components/navbar/Navbar';
+import { useRouter } from 'next/router'; // new import
 
 const SignUp = () => {
 const [name, setName] = useState("");
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
+const [passwordPlaceholder, setPasswordPlaceholder] = useState("Slaptažodis"); // New state variable for password placeholder
+
+const router = useRouter(); // new line
 
 const createUser = async () => {
     try {
@@ -26,23 +30,32 @@ const createUser = async () => {
   return (
     <>
     < Navbar />
-    <h1 className={styles.title}>Naujo nario registracija:</h1>
-
-    <div className={styles.form}>
-        <input 
+    <p className={styles.title}>Naujo nario registracija:</p>
+        <div className={styles.form}>
+        <input className={styles.input}
         value={name} onChange={(event) => setName(event.target.value)}
         placeholder='Jūsų vardas'
         />
-        <input 
+        </div>
+        <div className={styles.form}>
+        <input className={styles.input}
         value={email} onChange={(event) => setEmail(event.target.value)}
         placeholder='El. pašto adresas'
         />
-        <input 
-        value={password} onChange={(event) => setPassword(event.target.value)}
-        placeholder='Slaptažodis'
+        </div>
+        <div className={styles.form}>
+        <input className={styles.input}
+        type="password"
+        value={password} 
+        onChange={(event) => {
+            setPassword(event.target.value);
+            setPasswordPlaceholder(event.target.value ? "New placeholder when text is input" : "Slaptažodis"); // Change placeholder based on input
+          }}
+        placeholder={passwordPlaceholder}
         />
-
-      <button onClick={createUser} className={styles.button}>Sukurti vartotoją</button>
+    </div>
+    <div className={styles.buttonWrapper}>
+    <button onClick={createUser} className={styles.button}>Sukurti vartotoją</button>
     </div>
     </>
   )
