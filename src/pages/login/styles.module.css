@@ -1,0 +1,45 @@
+.button {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: rgb(131,58,180);
+    color: linear-gradient(90deg, rgba(131,58,180,0.8113839285714286) 0%, rgba(87,29,253,0.6265099789915967) 50%, rgba(252,176,69,0.6153054971988796) 100%);
+    font-family: 'Times New Roman', Times, serif;
+    text-transform:uppercase;
+    font-size: large;
+    margin: auto;
+    border: solid;
+}
+
+.botton:hover{
+    background-color: white;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.input {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,0.7945772058823529) 0%, rgba(87,29,253,0.5872942927170868) 50%, rgba(252,176,69,1) 100%);
+    border: none;
+
+}
+
+.input::placeholder{
+    color: white;
+}
+
+.buttonWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-self: center;
+    padding: 30px;
+}

@@ -8,12 +8,18 @@
     color: white;
     background: rgb(182, 182, 182);
     margin-top: 20px;
+    margin-left: 50px;
     font-family: 'Times New Roman', Times, serif;    
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: small;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    align-self: center;
+    width: 600px;
 }
 
 .link:hover {

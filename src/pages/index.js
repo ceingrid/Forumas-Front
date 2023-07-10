@@ -21,15 +21,12 @@ const MainPage = ({allQuestions}) => {
           </div>
         ))}
       </div>
-      <div>
-      <ul className={styles.ulStyle}>
-        <li className={styles.li}>
+      <div className={styles.buttonsWrapper}>
+    
           <a className={styles.aStyle} href="/">VISI KLAUSIMAI</a>
-        </li>
-        <li className={styles.li}>
+     
           <a className={styles.aStyle} href="/newQuestion/newQuestion">UŽDUOTI SAVO KLAUSIMĄ</a>
-        </li>
-      </ul>
+     
       </div>
       </div>
   );
