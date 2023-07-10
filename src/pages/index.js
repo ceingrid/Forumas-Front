@@ -22,9 +22,11 @@ const MainPage = ({allQuestions}) => {
           </div>
         ))}
       </div>
-      <div className={styles.buttonsWrapper}>
-        <Link href="/">VISI KLAUSIMAI</Link>
-        <Link href="/newQuestion">UŽDUOTI SAVO KLAUSIMĄ</Link>
+      <div className={styles.buttonWrapper}>
+        <Link className={styles.button} href="/">VISI KLAUSIMAI</Link>
+        </div>
+        <div className={styles.buttonWrapper}>
+        <Link className={styles.button2} href="/newQuestion">UŽDUOTI SAVO KLAUSIMĄ</Link>
       </div>
       </div>
   );
